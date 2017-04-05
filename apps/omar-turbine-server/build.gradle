@@ -36,6 +36,7 @@ apply plugin: 'spring-boot'
 apply plugin: "java"
 apply plugin: "maven-publish"
 apply plugin: "maven"
+group "io.ossim.omar.apps"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
