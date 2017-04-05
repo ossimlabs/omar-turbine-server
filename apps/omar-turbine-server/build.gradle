@@ -1,13 +1,30 @@
 buildscript {
 	ext {
 		springBootVersion = '1.4.0.RELEASE'
-	}
-	repositories {
-	   mavenLocal()
-      maven { url "${System.env.OSSIM_MAVEN_PROXY}" }
+     baseImage = "omar-base"
+     dockerStatementsOverride = {
+       [
+          "FROM ${project.dockerNamespaceUrl}${project.ext.baseImage}:${project.dockerAppTag}",
 
-		//mavenCentral()
+          "MAINTAINER RadiantBlue Technologies radiantblue.com",
+          """LABEL com.radiantblue.version="" """,
+          "COPY ${project.name}-${buildVersion}-${buildVersionTag}.jar /usr/share",
+          "VOLUME /dev/random /home /Users",
+          "EXPOSE 8761",
+          "CMD java -Xms256m -Xmx1024m -Dspring.profiles.active=production -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/omar-turbine-server -jar /usr/share/${project.name}-${buildVersion}-${buildVersionTag}.jar"
+
+       ]
+     }
 	}
+  if(System.env.OMAR_COMMON_PROPERTIES)
+  {
+      apply from: System.env.OMAR_COMMON_PROPERTIES
+  }
+   repositories {
+      mavenLocal()
+      maven { url "${ossimMavenProxy}" }
+      mavenCentral()
+   }
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
@@ -16,18 +33,17 @@ buildscript {
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
+apply plugin: "java"
+apply plugin: "maven-publish"
+apply plugin: "maven"
 
-jar {
-	baseName = 'omar-turbine-server'
-	version = '0.0.1-SNAPSHOT'
-}
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
   mavenLocal()
-  maven { url "${System.env.OSSIM_MAVEN_PROXY}" }
-  //mavenCentral()
+  maven { url "${ossimMavenProxy}" }
+  mavenCentral()
 }
 
 
@@ -44,4 +60,12 @@ dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.SR7"
 	}
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      from components.java
+    }
+  }
 }
