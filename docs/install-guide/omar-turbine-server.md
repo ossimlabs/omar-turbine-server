@@ -11,4 +11,4 @@ CMD java -Xms256m -Xmx1024m -Dspring.profiles.active=production -Djava.security.
 Ref: [omar-base](../../../omar-base/docs/instal-guide/omar-base/)
 
 ## JAR
-[http://artifactory.ossim.io/artifactory/webapp/#/artifacts/browse/tree/General/omar-local/io/ossim/omar/apps/omar-turbine-server](http://artifactory.ossim.io/artifactory/webapp/#/artifacts/browse/tree/General/omar-local/io/ossim/omar/apps/omar-turbine-server)
+[https://artifactory.ossim.io/artifactory/webapp/#/artifacts/browse/tree/General/omar-local/io/ossim/omar/apps/omar-turbine-server](https://artifactory.ossim.io/artifactory/webapp/#/artifacts/browse/tree/General/omar-local/io/ossim/omar/apps/omar-turbine-server)
