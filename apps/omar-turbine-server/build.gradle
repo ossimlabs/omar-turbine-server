@@ -8,7 +8,7 @@ buildscript {
           "MAINTAINER DigitalGlobe-RadiantBlue",
           """LABEL com.digitalglobe.version="" """,
           "ENV HOME /home/omar",
-          "COPY ${project.name}-${buildVersion}-${buildVersionTag}.jar /home/omar",
+          "COPY /${project.name}-${buildVersion}-${buildVersionTag}.jar /home/omar",
           'RUN find $HOME -type d -exec chmod g+x {} +',
           "USER 1001",
           "WORKDIR /home/omar",
