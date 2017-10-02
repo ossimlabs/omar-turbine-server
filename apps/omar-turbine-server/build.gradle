@@ -11,9 +11,9 @@ buildscript {
           "COPY ${project.name}-${buildVersion}-${buildVersionTag}.jar /home/omar",
 //          'RUN find $HOME -type d -exec chmod g+x {} +',
 //          "USER 1001",
-//          "WORKDIR /home/omar",
-//          "VOLUME /dev/random /home",
           "EXPOSE 8761",
+         "WORKDIR /home/omar",
+//          "VOLUME /dev/random /home",
           "CMD java -Xms256m -Xmx1024m -Dspring.profiles.active=production -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/omar-turbine-server -jar /home/omar/${project.name}-${buildVersion}-${buildVersionTag}.jar"
        ]
      }
