@@ -1,2 +1,6 @@
 server:
   port: 8989
+
+turbine:
+  appConfig: omar-avro,omar-oms,omar-sqs,omar-stager,omar-ui,omar-download,omar-wms,omar-wfs,tlv
+  clusterNameExpression: 'default'
