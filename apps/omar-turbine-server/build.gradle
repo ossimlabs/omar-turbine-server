@@ -8,7 +8,7 @@ buildscript {
           "MAINTAINER DigitalGlobe-RadiantBlue",
           """LABEL com.digitalglobe.version="" """,
           "COPY ${project.name}-${buildVersion}-${buildVersionTag}.jar /home/omar",
-          "EXPOSE 8761",
+          "EXPOSE 8761 8989",
          "WORKDIR /home/omar",
           "CMD java -Xms256m -Xmx1024m -Dspring.profiles.active=production -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/omar-turbine-server -jar /home/omar/${project.name}-${buildVersion}-${buildVersionTag}.jar"
        ]
