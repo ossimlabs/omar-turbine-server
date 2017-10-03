@@ -1,6 +1,2 @@
 server:
   port: 8989
-turbine:
-  aggregator:
-    clusterConfig: omar-dev,omar-rel
-  instanceUrlSuffix: :8080/omar-download-app/hystrix.stream
