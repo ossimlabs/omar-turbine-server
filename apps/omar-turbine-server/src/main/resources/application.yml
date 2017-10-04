@@ -4,4 +4,4 @@ server:
 turbine:
   aggregator:
     clusterConfig: omar-dev
-  appConfig: omar-avro,omar-oms,omar-sqs,omar-stager,omar-ui,omar-download,omar-wms,omar-wfs,tlv
+  appConfig: omar-download
