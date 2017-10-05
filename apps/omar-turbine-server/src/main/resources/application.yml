@@ -3,5 +3,8 @@ server:
 
 turbine:
   aggregator:
-    clusterConfig: omar-dev
+    clusterConfig: omar-download
   appConfig: omar-download
+
+logging:
+  level: INFO
