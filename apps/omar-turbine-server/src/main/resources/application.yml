@@ -1,2 +1,10 @@
 server:
   port: 8989
+
+turbine:
+  aggregator:
+    clusterConfig: omar-download
+  appConfig: omar-download
+
+logging:
+  level: INFO
