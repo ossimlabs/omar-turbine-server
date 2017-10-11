@@ -3,8 +3,8 @@ server:
 
 turbine:
   aggregator:
-    clusterConfig: omar-download
-  appConfig: omar-download
+    clusterConfig: omar-wfs
+  appConfig: omar-wfs
 
 logging:
   level: INFO
