@@ -6,7 +6,7 @@ server:
 #    clusterConfig: OMAR-WFS,OMAR-DOWNLOAD
 #  appConfig: omar-wfs,omar-download
 
- turbine:
+turbine:
   appConfig: omar-wfs,omar-download
   clusterNameExpression: 'default'
 
