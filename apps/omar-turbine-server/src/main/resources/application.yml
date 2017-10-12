@@ -3,7 +3,7 @@ server:
 
 turbine:
   aggregator:
-    clusterConfig: omar-dev
+    clusterConfig: OMAR-WFS,OMAR-DOWNLOAD
   appConfig: omar-wfs,omar-download
 
 logging:
