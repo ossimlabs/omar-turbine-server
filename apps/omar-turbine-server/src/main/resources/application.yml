@@ -1,14 +1,10 @@
 server:
   port: 8989
 
-#turbine:
-#  aggregator:
-#    clusterConfig: OMAR-WFS,OMAR-DOWNLOAD
-#  appConfig: omar-wfs,omar-download
-
 turbine:
-  appConfig: omar-wfs,omar-download
-  clusterNameExpression: 'default'
+  aggregator:
+    clusterConfig: omar-wfs
+  appConfig: omar-wfs
 
 logging:
   level: INFO
