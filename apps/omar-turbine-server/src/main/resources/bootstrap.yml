@@ -16,6 +16,10 @@ spring:
       uri: http://omar-config-server:8888/omar-config-server
 #      uri: http://localhost:9999
 eureka:
+  instance:
+    metadata-map:
+      management.port: ${management.port:8081}
+    leaseRenewalIntervalInSeconds: 10
   client:
     serviceUrl:
       defaultZone: http://omar-eureka-server:8761/omar-eureka-server/eureka/

@@ -1,10 +1,2 @@
-server:
-  port: 8989
-
-turbine:
-  aggregator:
-    clusterConfig: omar-wfs
-  appConfig: omar-wfs
-
 logging:
   level: INFO
