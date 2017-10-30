@@ -4,9 +4,9 @@ buildscript {
      baseImage = "omar-base"
      dockerStatementsOverride = {
        [
-          "FROM ${project.dockerNamespaceUrl}${project.ext.baseImage}:${project.dockerAppTag}",
-          "MAINTAINER DigitalGlobe-RadiantBlue",
-          """LABEL com.digitalglobe.version="" """,
+           "FROM ${project.dockerNamespaceUrl}${project.ext.baseImage}:${project.dockerAppTag}",
+           "MAINTAINER Radiant Solutions",
+           """LABEL com.radiantsolutions.version="" """,
           "COPY ${project.name}-${buildVersion}-${buildVersionTag}.jar /home/omar",
           "EXPOSE 8761 8989",
          "WORKDIR /home/omar",
@@ -34,10 +34,10 @@ plugins {
 
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot'
 apply plugin: "java"
 apply plugin: "maven-publish"
 apply plugin: "maven"
+apply plugin: 'org.springframework.boot'
 group "io.ossim.omar.apps"
 
 sourceCompatibility = 1.8
