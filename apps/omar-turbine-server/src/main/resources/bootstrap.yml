@@ -1,6 +1,29 @@
 spring:
   application:
     name: omar-turbine-server
+  cloud:
+    config:
+      uri: http://localhost:8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+---
+spring:
+  profiles: production
+  cloud:
+    config:
+      uri: http://omar-config-server:8888/omar-config-server
+#      uri: http://localhost:9999
+eureka:
+  instance:
+    metadata-map:
+      management.port: ${management.port:8081}
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://omar-eureka-server:8761/omar-eureka-server/eureka/
+#      defaultZone: http://localhost:9761/eureka/
 
 logging:
   level: INFO
