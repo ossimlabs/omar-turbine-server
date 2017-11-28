@@ -1,0 +1,9 @@
+---
+# Set the context path for the application.
+#server:
+#  contextPath: /omar-turbine-server
+#  port: 8989
+
+#turbine:
+#  appConfig: omar-download,omar-wfs
+#  clusterNameExpression: "'default'"
