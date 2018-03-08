@@ -1,32 +1,30 @@
 buildscript {
     ext {
-     baseImage = "omar-base"
-   }
-  if(System.env.OMAR_COMMON_PROPERTIES)
-  {
-      apply from: System.env.OMAR_COMMON_PROPERTIES
-  }
+        baseImage = "omar-base"
+        dockerStatementsOverride = {[
+            "FROM ${project.dockerNamespaceUrl}${project.ext.baseImage}:${project.dockerAppTag}",
+            "COPY ${project.name}-${buildVersion}-${buildVersionTag}.jar /home/omar",
+            "EXPOSE 8761 8989",
+            "WORKDIR /home/omar",
+            "CMD java -Xms256m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/omar-turbine-server -jar /home/omar/${project.name}-${buildVersion}-${buildVersionTag}.jar"
+        ]}
+    }
+    if(System.env.OMAR_COMMON_PROPERTIES)
+    {
+        apply from: System.env.OMAR_COMMON_PROPERTIES
+    }
  
-	ext {
-		springBootVersion = "${springBootV}"
-     dockerStatementsOverride = {
-       [
-           "FROM ${project.dockerNamespaceUrl}${project.ext.baseImage}:${project.dockerAppTag}",
-          "COPY ${project.name}-${buildVersion}-${buildVersionTag}.jar /home/omar",
-          "EXPOSE 8761 8989",
-         "WORKDIR /home/omar",
-          "CMD java -Xms256m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/omar-turbine-server -jar /home/omar/${project.name}-${buildVersion}-${buildVersionTag}.jar"
-       ]
-     }
-	}
-  repositories {
-      mavenLocal()
-      maven { url "${ossimMavenProxy}" }
-      mavenCentral()
-   }
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = "${springBootV}"
+    }
+    repositories {
+        mavenLocal()
+        maven { url "${ossimMavenProxy}" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 plugins {
@@ -46,16 +44,14 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-  mavenLocal()
-  maven { url "${ossimMavenProxy}" }
-  mavenCentral()
+    mavenLocal()
+    maven { url "${ossimMavenProxy}" }
+    mavenCentral()
 }
 
 
 dependencies {
-
     compile "de.codecentric:spring-boot-admin-starter-client:${springBootAdminStarterClientV}"
-
     compile('org.springframework.cloud:spring-cloud-starter-hystrix-dashboard')
     compile('org.springframework.cloud:spring-cloud-starter-turbine')
     compile('org.springframework.boot:spring-boot-starter-actuator')
@@ -67,15 +63,15 @@ dependencies {
 }
 
 dependencyManagement {
-	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudDependencyV}"
-	}
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudDependencyV}"
+    }
 }
 
 publishing {
-  publications {
-    mavenJava(MavenPublication) {
-      from components.java
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
     }
-  }
 }
